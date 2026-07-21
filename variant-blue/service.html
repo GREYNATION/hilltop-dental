@@ -1045,5 +1045,77 @@
   document.querySelectorAll('img').forEach(bind);
 })();
 </script>
+<!-- Keith Harris & GREYNATION AI Booking Modal -->
+<div id="bookingModal" class="booking-modal-overlay" style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:1rem;">
+  <div style="background:#ffffff; max-width:540px; width:100%; border-radius:24px; padding:2rem; position:relative; box-shadow:0 25px 50px -12px rgba(0,0,0,0.25); font-family:sans-serif; color:#1a202c; max-height:90vh; overflow-y:auto;">
+    <button onclick="closeBookingModal()" style="position:absolute; top:1rem; right:1rem; background:#f1f5f9; border:none; width:36px; height:36px; border-radius:50%; font-size:1.2rem; cursor:pointer; color:#64748b;">?</button>
+    
+    <div style="text-align:center; margin-bottom:1.5rem;">
+      <img src="assets/img/keith-harris.jpg" alt="Keith Harris - GREYNATION AI" style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin:0 auto 0.75rem auto; border:3px solid #24a3b1; box-shadow:0 4px 12px rgba(36,163,177,0.3);" />
+      <h3 style="margin:0; font-size:1.4rem; font-weight:700; color:#0f172a;">Keith Harris</h3>
+      <span style="display:inline-block; font-size:0.8rem; font-weight:700; color:#24a3b1; letter-spacing:0.05em; text-transform:uppercase; margin-top:0.25rem;">GREYNATION AI</span>
+      <p style="font-size:0.875rem; color:#475569; margin:0.75rem 0 0 0; line-height:1.5;">
+        On the call, we'll map your goals and show how our system brings more leads, booked meetings, and automates ops saving you time, money, and stress. You'll leave with a clear roadmap.
+      </p>
+    </div>
+
+    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:16px; margin-bottom:1.5rem; padding:1rem;">
+      <h4 style="margin:0 0 0.25rem 0; font-size:0.95rem; color:#0f172a; font-weight:600;">GREYNATION AI & Keith Harris Consultation</h4>
+      <p style="margin:0; font-size:0.8rem; color:#64748b;">Work with us — Let's get a few quick details first before you book your AI consultation.</p>
+    </div>
+
+    <form onsubmit="submitBookingForm(event)" style="display:flex; flex-direction:column; gap:0.75rem;">
+      <div>
+        <label style="display:block; font-size:0.75rem; font-weight:700; color:#334155; text-transform:uppercase; margin-bottom:0.25rem;">Full Name *</label>
+        <input type="text" required placeholder="John Smith" style="width:100%; padding:0.65rem 0.85rem; border:1px solid #cbd5e1; border-radius:10px; font-size:0.875rem; box-sizing:border-box;" />
+      </div>
+      <div>
+        <label style="display:block; font-size:0.75rem; font-weight:700; color:#334155; text-transform:uppercase; margin-bottom:0.25rem;">Phone or Email *</label>
+        <input type="text" required placeholder="john@example.com or (555) 000-0000" style="width:100%; padding:0.65rem 0.85rem; border:1px solid #cbd5e1; border-radius:10px; font-size:0.875rem; box-sizing:border-box;" />
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+        <div>
+          <label style="display:block; font-size:0.75rem; font-weight:700; color:#334155; text-transform:uppercase; margin-bottom:0.25rem;">Preferred Date</label>
+          <input type="date" style="width:100%; padding:0.65rem 0.85rem; border:1px solid #cbd5e1; border-radius:10px; font-size:0.875rem; box-sizing:border-box;" />
+        </div>
+        <div>
+          <label style="display:block; font-size:0.75rem; font-weight:700; color:#334155; text-transform:uppercase; margin-bottom:0.25rem;">Preferred Time</label>
+          <select style="width:100%; padding:0.65rem 0.85rem; border:1px solid #cbd5e1; border-radius:10px; font-size:0.875rem; box-sizing:border-box;">
+            <option>Morning (9 AM - 12 PM)</option>
+            <option>Afternoon (12 PM - 4 PM)</option>
+            <option>Evening (4 PM - 7 PM)</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" style="margin-top:0.5rem; background:#24a3b1; color:#ffffff; border:none; padding:0.85rem; border-radius:12px; font-weight:700; font-size:0.95rem; cursor:pointer;">
+        Confirm Consultation with Keith Harris
+      </button>
+    </form>
+    <div id="bookingSuccessMsg" style="display:none; text-align:center; padding:1.5rem; color:#15803d; font-weight:600; font-size:0.95rem; background:#f0fdf4; border-radius:16px;">
+      ? Consultation requested! Keith Harris & GREYNATION AI will contact you shortly.
+    </div>
+  </div>
+</div>
+
+<script>
+function openBookingModal(e) {
+  if(e) e.preventDefault();
+  document.getElementById('bookingModal').style.display = 'flex';
+}
+function closeBookingModal() {
+  document.getElementById('bookingModal').style.display = 'none';
+}
+function submitBookingForm(e) {
+  e.preventDefault();
+  e.target.style.display = 'none';
+  document.getElementById('bookingSuccessMsg').style.display = 'block';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href*="calendly.com"]').forEach(function(link) {
+    link.addEventListener('click', openBookingModal);
+  });
+});
+</script>
 </body>
 </html>
+
